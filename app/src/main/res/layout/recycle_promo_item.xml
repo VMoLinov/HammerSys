@@ -2,5 +2,7 @@
 <ImageView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="300dp"
     android:layout_height="112dp"
-    android:layout_marginStart="16dp"
-    android:background="@android:color/holo_green_dark" />
+    android:layout_marginEnd="16dp"
+    android:contentDescription="@string/promo_item"
+    android:scaleType="center"
+    android:src="@drawable/rectangle_38" />

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/categoryContainer"
+    android:layout_width="88dp"
+    android:layout_height="32dp"
+    android:layout_marginEnd="8dp"
+    android:background="@drawable/category_selected"
+    android:clickable="true"
+    android:elevation="10dp"
+    android:focusable="true">
+
+    <TextView
+        android:id="@+id/categoryName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:focusable="true"
+        android:textColor="#C3C4C9"
+        tools:text="Веганская" />
+</FrameLayout>
