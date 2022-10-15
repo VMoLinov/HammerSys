@@ -31,7 +31,7 @@ class GlideImageLoader : ImageLoader {
     private fun loadUrl(url: String, imageView: ImageView, isCircle: Boolean) {
         val radius: Int =
             if (isCircle) imageView.context.resources.getDimensionPixelSize(R.dimen.corner_radius)
-            else 1
+            else 20
         Glide.with(imageView.context)
             .load(BASE_URL + url)
             .diskCacheStrategy(DiskCacheStrategy.ALL)

@@ -6,7 +6,7 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class Film(
     val backdrop_path: String?,
-    val genre_ids: IntArray?,
+    val genre_ids: IntArray,
     val id: Long,
     val original_title: String?,
     val overview: String?,

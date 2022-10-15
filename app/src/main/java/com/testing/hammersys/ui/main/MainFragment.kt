@@ -1,5 +1,6 @@
 package com.testing.hammersys.ui.main
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -18,17 +19,24 @@ class MainFragment : Fragment() {
 
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
-
-    private lateinit var viewModel: MainViewModel
     private val adapter = FilmAdapter()
     private val promoAdapter = PromoAdapter()
-    private val categoryAdapter = CategoryAdapter()
+    private lateinit var viewModel: MainViewModel
+    private lateinit var categoryAdapter: CategoryAdapter
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.films.observe(viewLifecycleOwner) { adapter.submitList(it) }
-        viewModel.categories.observe(viewLifecycleOwner) { categoryAdapter.submitList(it) }
-        promoAdapter.submitList(listOf(1, 2))
+        viewModel.films.observe(viewLifecycleOwner) {
+            adapter.submitList(it)
+        }
+        viewModel.categories.observe(viewLifecycleOwner) {
+            categoryAdapter.submitList(it)
+            categoryAdapter.notifyDataSetChanged()
+        }
+        viewModel.promo.observe(viewLifecycleOwner) {
+            promoAdapter.submitList(it)
+        }
         binding.recyclerFilms.recyclerFilms.adapter = adapter
         binding.recyclerCategory.adapter = categoryAdapter
         binding.recyclerPromo.adapter = promoAdapter
@@ -38,10 +46,11 @@ class MainFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        viewModel = ViewModelProvider(
-            this,
-            ViewModelFactory(requireActivity().application, ApiHolder)
-        )[MainViewModel::class.java]
+        viewModel =
+            ViewModelProvider(
+                this, ViewModelFactory(requireActivity().application, ApiHolder)
+            )[MainViewModel::class.java]
+        categoryAdapter = CategoryAdapter(viewModel)
         _binding = FragmentMainBinding.inflate(inflater, container, false)
         return binding.root
     }

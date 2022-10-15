@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/categoryContainer"
     android:layout_width="88dp"
     android:layout_height="32dp"
-    android:layout_marginEnd="8dp"
-    android:background="@drawable/category_selected"
-    android:clickable="true"
-    android:elevation="10dp"
-    android:focusable="true">
+    android:layout_marginEnd="8dp">
 
-    <TextView
+    <com.google.android.material.chip.Chip
         android:id="@+id/categoryName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:focusable="true"
-        android:textColor="#C3C4C9"
+        style="@style/Theme.HammerSys.Chip"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:chipCornerRadius="4dp"
+        android:elevation="5dp"
+        app:chipMinTouchTargetSize="0dp"
+        tools:checked="true"
         tools:text="Веганская" />
 </FrameLayout>

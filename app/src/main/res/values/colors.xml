@@ -12,4 +12,8 @@
     <color name="text_selected">#FD3A69</color>
     <color name="tab_surface">#F0F0F0</color>
     <color name="header_text_color">#222831</color>
+    <color name="chip_text_checked">#FD3A69</color>
+    <color name="chip_text_unchecked">#C3C4C9</color>
+    <color name="chip_back_checked">#80FD3A69</color>
+    <color name="chip_back_unchecked">#FFFFFF</color>
 </resources>

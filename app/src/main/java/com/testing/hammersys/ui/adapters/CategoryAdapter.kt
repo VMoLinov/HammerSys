@@ -1,12 +1,10 @@
 package com.testing.hammersys.ui.adapters
 
-import android.graphics.drawable.TransitionDrawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.testing.hammersys.R
 import com.testing.hammersys.databinding.RecycleCategoryItemBinding
 import com.testing.hammersys.model.Category
 import com.testing.hammersys.viewmodels.MainViewModel
@@ -31,7 +29,12 @@ class CategoryAdapter(private val viewModel: MainViewModel) :
                 parent,
                 false
             )
-        ).apply { itemView.setOnClickListener { viewModel.categoryClickListener?.invoke(itemView) } }
+        ).apply {
+            button.setOnClickListener {
+                if (button.isChecked) viewModel.categoryClickListener?.invoke(this)
+                else viewModel.restoreData()
+            }
+        }
     }
 
     override fun onBindViewHolder(holder: PromoViewHolder, position: Int) {
@@ -41,12 +44,10 @@ class CategoryAdapter(private val viewModel: MainViewModel) :
     inner class PromoViewHolder(private val binding: RecycleCategoryItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
+        val button = binding.categoryName
+
         fun bind(category: Category) = with(binding) {
-            categoryContainer.setOnClickListener {
-                val transition = it.background as TransitionDrawable
-                transition.startTransition(600)
-                categoryName.setTextColor(it.context.getColor(R.color.text_selected))
-            }
+            button.isChecked = category.isChecked
             categoryName.text = category.name
         }
     }

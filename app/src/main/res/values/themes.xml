@@ -37,4 +37,14 @@
         <item name="textAllCaps">false</item>
         <item name="android:fontFamily">@font/inter</item>
     </style>
+
+    <style name="Theme.HammerSys.Chip" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="chipBackgroundColor">@drawable/background_color_chip_state_list</item>
+        <item name="android:textColor">@drawable/text_color_chip_state_list</item>
+        <item name="android:layout_margin">2dp</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:ellipsize">end</item>
+        <item name="maxLines">1</item>
+        <item name="android:textAlignment">center</item>
+    </style>
 </resources>
